@@ -121,15 +121,16 @@ public class Analisis {
 
             if (mat.find()) {
                 tipo = Token.IDENTIFICADOR;
+                tipo = Token.CONSTANTE;
             } else {
-                impresion.add("Error lexico en la linea " + renglon + " token " + token);
+                impresion.add("Error lexico en la linea: " + renglon + " Token " + token);
                 bandera = false;
                 return;
             }
         }
         tokens.insertar(new Token(token, tipo, renglon));
         impresion.add(new Token(token, tipo, renglon).toString());
-
+        
     }
 
     public Token analisisSintactio(NodoDoble<Token> nodo) {
@@ -140,7 +141,7 @@ public class Analisis {
             to = nodo.dato;
 
             try {
-
+                
                 Anterior1Valor = nodo.anterior.dato.getValor();
                 Anterior1Tipo = nodo.anterior.dato.getTipo();
                 Anterior2Valor = nodo.anterior.anterior.dato.getValor();
